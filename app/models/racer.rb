@@ -1,0 +1,3 @@
+class Racer
+
+end
