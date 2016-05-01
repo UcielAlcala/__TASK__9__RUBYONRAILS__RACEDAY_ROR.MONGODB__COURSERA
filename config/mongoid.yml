@@ -5,7 +5,7 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: task9_rubyonrails_raceday_ror_mongodb_coursera_development
+      database: raceday_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -128,7 +128,7 @@ development:
 test:
   clients:
     default:
-      database: task9_rubyonrails_raceday_ror_mongodb_coursera_test
+      database: raceday_test
       hosts:
         - localhost:27017
       options:
