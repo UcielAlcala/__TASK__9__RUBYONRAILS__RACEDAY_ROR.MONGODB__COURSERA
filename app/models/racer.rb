@@ -1,5 +1,5 @@
 class Racer
-
+  attr_accessor :id, :number, :first_name, :last_name, :gender, :group, :secs
 
   def self.mongo_client
     Mongoid::Clients.default
@@ -15,7 +15,7 @@ class Racer
     results = results.limit(limit) if !limit.nil?
 
     return results
-    
+
   end
 
 
