@@ -1,8 +1,10 @@
 class Racer
+  include ActiveModel::Model
+
   attr_accessor :id, :number, :first_name, :last_name, :gender, :group, :secs
 
-  #Add an initializer that can set the properties of the class
-  #using the keys from a racers document.
+  # Add an initializer that can set the properties of the class
+  # using the keys from a racers document.
   def initialize(params={})
     @id=params[:_id].nil? ? params[:id] : params[:_id].to_s
     @number=params[:number].to_i
