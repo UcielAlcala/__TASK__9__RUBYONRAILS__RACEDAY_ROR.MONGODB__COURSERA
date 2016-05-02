@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @racers.each do |racer| %>
+    <% @racers.each do |racer| racer=toRacer(racer) %>
       <tr>
         <td><%= racer.number %></td>
         <td><%= racer.first_name %></td>
