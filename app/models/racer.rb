@@ -34,7 +34,7 @@ class Racer
   # get in class instance form
   def self.find id
 
-  	result = collection.find(:_id =>id)
+  	result = collection.find(:_id => BSON::ObjectId.from_string(id))
                 .projection(
                     {
                       _id: true,
