@@ -126,11 +126,14 @@ class Racer
     #get the associated page of Racers -- eagerly convert doc to Racer
     racers = []
 
+    # Goal: find all 'racers' --> all({}, x, y, z).....
+    # use {} not need parameters for filter
     all({}, sort, skip, limit).each do |doc|
       racers << Racer.new(doc)
     end
 
-    #get a count of all documents in the collection
+    # Goal: find all 'racers' and get number total of elements
+    # use {} not need parameters for filter
     total = all({}, sort, 0, 1).count
     WillPaginate::Collection.create(page, limit, total) do |pager|
       pager.replace(racers)
