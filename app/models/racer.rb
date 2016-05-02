@@ -15,6 +15,10 @@ class Racer
     @secs=params[:secs].to_i
   end
 
+  def persisted?
+    !@id.nil?
+  end
+
   def self.mongo_client
     Mongoid::Clients.default
   end
