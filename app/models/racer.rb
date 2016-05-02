@@ -50,5 +50,21 @@ class Racer
   	return result.nil? ? nil : Racer.new(result)
   end
 
+  # create a new document using the current instance
+def save
+  Rails.logger.debug {"saving #{self}"}
+
+  result = self.class.collection
+            .insert_one(
+                        _id: @id,
+                        number: @number,
+                        first_name: @first_name,
+                        last_name: @last_name,
+                        gender: @gender,
+                        group: @group,
+                        secs: @secs
+                        )
+  @id = result.inserted_id
+end
 
 end
