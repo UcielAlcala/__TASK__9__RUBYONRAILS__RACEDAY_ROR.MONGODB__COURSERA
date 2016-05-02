@@ -118,29 +118,23 @@ class Racer
   # and returns instantiated Racer classes within a will_paginate
   # page
   def self.paginate(params)
-
-    Rails.logger.debug("paginate(#{params})")
-
     page = (params[:page] ||= 1).to_i
-    limit = (params[:per_page] || 30).to_i
-    skip = (page-1)*limit
+    limit = (params[:per_page] ||= 30).to_i
+    skip = (page - 1)*limit
     sort = params[:sort] ||= {}
 
     #get the associated page of Racers -- eagerly convert doc to Racer
     racers = []
-
-    #all(prototype={}, sort={:number => 1}, skip=0, limit=nil)
-
 
     all(params, sort, skip, limit).each do |doc|
       racers << Racer.new(doc)
     end
 
     #get a count of all documents in the collection
-    total=all(params, sort, 0, 1).count
-
+    total = all(params, sort, 0, 1).count
     WillPaginate::Collection.create(page, limit, total) do |pager|
       pager.replace(racers)
     end
+
   end
 end
