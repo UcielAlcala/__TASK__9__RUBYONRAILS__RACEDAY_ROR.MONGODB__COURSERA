@@ -67,7 +67,10 @@ class Racer
     @id = result.inserted_id
   end
 
+  # update the values for this instance
   def update(params)
+    Rails.logger.debug {"updating #{self} with #{params}"}
+
     @number = params[:number].to_i
     @first_name = params[:first_name]
     @last_name = params[:last_name]
